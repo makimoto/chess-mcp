@@ -1,0 +1,251 @@
+{
+  "name": "chess-mcp",
+  "description": "Chess MCP Server - Complete chess game management for LLM agents",
+  "version": "0.1.0",
+  "author": "Shimpei Makimoto",
+  "license": "MIT",
+  "homepage": "https://github.com/makimoto/chess-mcp",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/makimoto/chess-mcp.git"
+  },
+  "mcp": {
+    "server": {
+      "command": "node",
+      "args": ["dist/server.js"],
+      "cwd": "{{package_dir}}",
+      "env": {
+        "NODE_ENV": "production"
+      }
+    },
+    "tools": [
+      {
+        "name": "create_game",
+        "description": "Create a new chess game between two players",
+        "parameters": {
+          "whitePlayerId": {
+            "type": "string",
+            "description": "ID of the white player"
+          },
+          "blackPlayerId": {
+            "type": "string", 
+            "description": "ID of the black player"
+          }
+        }
+      },
+      {
+        "name": "get_game_status",
+        "description": "Get the current status of a chess game",
+        "parameters": {
+          "gameId": {
+            "type": "string",
+            "description": "Game identifier"
+          }
+        }
+      },
+      {
+        "name": "make_move",
+        "description": "Make a move in a chess game",
+        "parameters": {
+          "gameId": {
+            "type": "string",
+            "description": "Game identifier"
+          },
+          "move": {
+            "type": "string",
+            "description": "Move in algebraic notation (e.g., e2e4, Nf3)"
+          },
+          "playerId": {
+            "type": "string",
+            "description": "ID of the player making the move"
+          }
+        }
+      },
+      {
+        "name": "list_games",
+        "description": "List games with optional filtering",
+        "parameters": {
+          "playerId": {
+            "type": "string",
+            "description": "Filter by player ID",
+            "required": false
+          },
+          "status": {
+            "type": "string",
+            "description": "Filter by status (active, completed, paused)",
+            "required": false
+          }
+        }
+      },
+      {
+        "name": "get_board_state",
+        "description": "Get board state in various formats",
+        "parameters": {
+          "gameId": {
+            "type": "string",
+            "description": "Game identifier"
+          },
+          "format": {
+            "type": "string",
+            "description": "Format type (visual, FEN, PGN)",
+            "default": "visual"
+          }
+        }
+      },
+      {
+        "name": "get_legal_moves",
+        "description": "Get legal moves for current position",
+        "parameters": {
+          "gameId": {
+            "type": "string",
+            "description": "Game identifier"
+          },
+          "square": {
+            "type": "string",
+            "description": "Specific square to get moves from",
+            "required": false
+          }
+        }
+      },
+      {
+        "name": "validate_move",
+        "description": "Validate a move without executing it",
+        "parameters": {
+          "gameId": {
+            "type": "string",
+            "description": "Game identifier"
+          },
+          "move": {
+            "type": "string",
+            "description": "Move to validate"
+          }
+        }
+      },
+      {
+        "name": "get_move_history",
+        "description": "Get move history in various formats",
+        "parameters": {
+          "gameId": {
+            "type": "string",
+            "description": "Game identifier"
+          },
+          "format": {
+            "type": "string",
+            "description": "Format type (algebraic, UCI, verbose, with_fen, detailed)",
+            "default": "algebraic"
+          }
+        }
+      },
+      {
+        "name": "resign_game",
+        "description": "Resign from a chess game",
+        "parameters": {
+          "gameId": {
+            "type": "string",
+            "description": "Game identifier"
+          },
+          "playerId": {
+            "type": "string",
+            "description": "ID of the player resigning"
+          }
+        }
+      },
+      {
+        "name": "offer_draw",
+        "description": "Offer a draw in a chess game",
+        "parameters": {
+          "gameId": {
+            "type": "string",
+            "description": "Game identifier"
+          },
+          "playerId": {
+            "type": "string",
+            "description": "ID of the player offering draw"
+          }
+        }
+      },
+      {
+        "name": "accept_draw",
+        "description": "Accept a draw offer",
+        "parameters": {
+          "gameId": {
+            "type": "string",
+            "description": "Game identifier"
+          },
+          "playerId": {
+            "type": "string",
+            "description": "ID of the player accepting draw"
+          }
+        }
+      },
+      {
+        "name": "decline_draw",
+        "description": "Decline a draw offer",
+        "parameters": {
+          "gameId": {
+            "type": "string",
+            "description": "Game identifier"
+          },
+          "playerId": {
+            "type": "string",
+            "description": "ID of the player declining draw"
+          }
+        }
+      },
+      {
+        "name": "export_game",
+        "description": "Export game in PGN or FEN format",
+        "parameters": {
+          "gameId": {
+            "type": "string",
+            "description": "Game identifier"
+          },
+          "format": {
+            "type": "string",
+            "description": "Export format (PGN, FEN)",
+            "default": "PGN"
+          }
+        }
+      },
+      {
+        "name": "import_game",
+        "description": "Import game from PGN format",
+        "parameters": {
+          "pgn": {
+            "type": "string",
+            "description": "PGN string to import"
+          },
+          "metadata": {
+            "type": "object",
+            "description": "Additional metadata",
+            "required": false
+          }
+        }
+      },
+      {
+        "name": "pause_game",
+        "description": "Pause an active game",
+        "parameters": {
+          "gameId": {
+            "type": "string",
+            "description": "Game identifier"
+          },
+          "playerId": {
+            "type": "string",
+            "description": "ID of the player requesting pause"
+          }
+        }
+      },
+      {
+        "name": "resume_game",
+        "description": "Resume a paused game",
+        "parameters": {
+          "gameId": {
+            "type": "string",
+            "description": "Game identifier"
+          }
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,61 @@
+# Source files (only include compiled output)
+src/
+
+# Tests
+tests/
+coverage/
+.nyc_output/
+
+# Development files
+.git/
+.gitignore
+.eslintrc*
+.prettierrc*
+.prettierignore
+tsconfig*.json
+jest.config.js
+eslint.config.js
+
+# Documentation (except README)
+docs/
+*.md
+!README.md
+
+# CI/CD
+.github/
+.travis.yml
+.circleci/
+
+# Development dependencies
+node_modules/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# Runtime data
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# Environment files
+.env*
+
+# Database files
+*.db
+*.sqlite
+
+# Husky
+.husky/
