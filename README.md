@@ -5,13 +5,16 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Node.js Version](https://img.shields.io/node/v/@makimoto/chess-mcp.svg)](https://nodejs.org/)
 
-A Model Context Protocol (MCP) server for chess games between LLM agents and human players. This server provides a comprehensive chess game management system with support for game creation, move execution, draw detection, and game state management.
+A Model Context Protocol (MCP) server for chess games between LLM agents and human players. This
+server provides a comprehensive chess game management system with support for game creation, move
+execution, draw detection, and game state management.
 
 ## Features
 
 - **Complete Chess Game Management**: Create, manage, and play chess games
 - **MCP Integration**: Seamlessly integrate with Claude and other LLM agents
-- **Advanced Draw Detection**: Automatic detection of stalemate, insufficient material, fifty-move rule, and threefold repetition
+- **Advanced Draw Detection**: Automatic detection of stalemate, insufficient material, fifty-move
+  rule, and threefold repetition
 - **Multiple Storage Options**: In-memory and SQLite storage adapters
 - **Comprehensive Game State**: Track game history, player information, and game status
 - **PGN Import/Export**: Import and export games in standard PGN format
@@ -33,12 +36,14 @@ npm install -g @makimoto/chess-mcp
 ```
 
 **Try these commands with Claude:**
+
 - "Create a chess game between Alice and Bob"
 - "Show me the board"
 - "Move e2 to e4"
 - "What moves can I make?"
 
-That's it! You're ready to play chess with Claude. For more detailed setup instructions, see the [Installation](#installation) section below.
+That's it! You're ready to play chess with Claude. For more detailed setup instructions, see the
+[Installation](#installation) section below.
 
 ## Installation
 
@@ -72,7 +77,8 @@ npm install -g @makimoto/chess-mcp
 
 ### Manual Configuration
 
-If automatic configuration doesn't work, you can manually add Chess MCP to your Claude configuration:
+If automatic configuration doesn't work, you can manually add Chess MCP to your Claude
+configuration:
 
 1. **Locate your Claude configuration file:**
    - macOS/Linux: `~/.claude/claude_desktop_config.json`
@@ -151,20 +157,22 @@ After configuration, restart Claude and verify the installation:
 **Common Issues:**
 
 1. **"command not found" error:**
+
    ```bash
    # Verify global installation
    npm list -g @makimoto/chess-mcp
-   
+
    # Reinstall if necessary
    npm uninstall -g @makimoto/chess-mcp
    npm install -g @makimoto/chess-mcp
    ```
 
 2. **Permission errors on Unix systems:**
+
    ```bash
    # Use sudo for global installation
    sudo npm install -g @makimoto/chess-mcp
-   
+
    # Or configure npm to use a different directory
    npm config set prefix ~/.npm-global
    export PATH=~/.npm-global/bin:$PATH
@@ -177,10 +185,11 @@ After configuration, restart Claude and verify the installation:
    - Check Claude's console/logs for error messages
 
 4. **Manual uninstallation:**
+
    ```bash
    # Remove from Claude configuration
    npm run mcp:remove
-   
+
    # Uninstall package
    npm uninstall -g @makimoto/chess-mcp
    ```
@@ -223,13 +232,16 @@ npm start
 ### Game Management
 
 #### `create_game`
+
 Create a new chess game between two players.
 
 **Parameters:**
+
 - `whitePlayerId` (string): ID of the white player
 - `blackPlayerId` (string): ID of the black player
 
 **Returns:**
+
 - `gameId` (string): Unique game identifier
 - `status` (string): Game status
 - `whitePlayer` (string): White player ID
@@ -238,129 +250,164 @@ Create a new chess game between two players.
 - `fen` (string): Current board position in FEN notation
 
 #### `get_game_status`
+
 Get the current status of a chess game.
 
 **Parameters:**
+
 - `gameId` (string): Game identifier
 
 **Returns:**
+
 - Complete game state including board position, move history, and game status
 
 #### `make_move`
+
 Make a move in a chess game.
 
 **Parameters:**
+
 - `gameId` (string): Game identifier
 - `move` (string): Move in algebraic notation (e.g., "e2e4", "Nf3")
 - `playerId` (string): ID of the player making the move
 
 **Returns:**
+
 - Updated game state after the move
 
 ### Board Analysis
 
 #### `get_board_state`
+
 Get the current board state in various formats.
 
 **Parameters:**
+
 - `gameId` (string): Game identifier
 - `format` (string): Format type ("visual", "FEN", "PGN")
 
 **Returns:**
+
 - Board representation in requested format
 
 #### `get_legal_moves`
+
 Get all legal moves for the current position.
 
 **Parameters:**
+
 - `gameId` (string): Game identifier
 - `square` (string, optional): Specific square to get moves from
 
 **Returns:**
+
 - Array of legal moves
 
 #### `validate_move`
+
 Validate a move without executing it.
 
 **Parameters:**
+
 - `gameId` (string): Game identifier
 - `move` (string): Move to validate
 
 **Returns:**
+
 - Validation result with detailed feedback
 
 ### Game History
 
 #### `get_move_history`
+
 Get the move history of a game.
 
 **Parameters:**
+
 - `gameId` (string): Game identifier
 - `format` (string): Format type ("algebraic", "UCI", "verbose", "with_fen", "detailed")
 
 **Returns:**
+
 - Move history in requested format
 
 #### `export_game`
+
 Export a game in PGN or FEN format.
 
 **Parameters:**
+
 - `gameId` (string): Game identifier
 - `format` (string): Export format ("PGN", "FEN")
 
 **Returns:**
+
 - Game data in requested format
 
 #### `import_game`
+
 Import a game from PGN format.
 
 **Parameters:**
+
 - `pgn` (string): PGN string to import
 - `metadata` (object, optional): Additional metadata
 
 **Returns:**
+
 - Imported game information
 
 ### Game Controls
 
 #### `resign_game`
+
 Resign from a chess game.
 
 **Parameters:**
+
 - `gameId` (string): Game identifier
 - `playerId` (string): ID of the player resigning
 
 #### `offer_draw`
+
 Offer a draw in a chess game.
 
 **Parameters:**
+
 - `gameId` (string): Game identifier
 - `playerId` (string): ID of the player offering draw
 
 #### `accept_draw` / `decline_draw`
+
 Accept or decline a draw offer.
 
 **Parameters:**
+
 - `gameId` (string): Game identifier
 - `playerId` (string): ID of the player responding
 
 #### `pause_game` / `resume_game`
+
 Pause or resume a chess game.
 
 **Parameters:**
+
 - `gameId` (string): Game identifier
 - `playerId` (string): ID of the player (for pause only)
 
 ### Game Listing
 
 #### `list_games`
+
 List games with optional filtering.
 
 **Parameters:**
+
 - `playerId` (string, optional): Filter by player ID
 - `status` (string, optional): Filter by status ("active", "completed", "paused")
 
 **Returns:**
+
 - Array of games matching the criteria
 
 ## Examples
@@ -369,20 +416,20 @@ List games with optional filtering.
 
 ```javascript
 // Create a new game
-const game = await createGame("alice", "bob");
+const game = await createGame('alice', 'bob');
 
 // Make moves
-await makeMove(game.gameId, "e2e4", "alice");
-await makeMove(game.gameId, "e7e5", "bob");
+await makeMove(game.gameId, 'e2e4', 'alice');
+await makeMove(game.gameId, 'e7e5', 'bob');
 
 // Get current board state
-const boardState = await getBoardState(game.gameId, "visual");
+const boardState = await getBoardState(game.gameId, 'visual');
 
 // Get legal moves
 const legalMoves = await getLegalMoves(game.gameId);
 
 // Export game
-const pgn = await exportGame(game.gameId, "PGN");
+const pgn = await exportGame(game.gameId, 'PGN');
 ```
 
 ### Advanced Features
@@ -398,7 +445,7 @@ const status = await getGameStatus(game.gameId);
 console.log(status.drawStatus); // null, or draw information
 
 // Pause and resume games
-await pauseGame(game.gameId, "alice");
+await pauseGame(game.gameId, 'alice');
 await resumeGame(game.gameId);
 ```
 

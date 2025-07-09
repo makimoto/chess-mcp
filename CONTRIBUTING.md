@@ -1,6 +1,7 @@
 # Contributing to Chess MCP
 
-Thank you for your interest in contributing to Chess MCP! This document provides guidelines and instructions for contributing to the project.
+Thank you for your interest in contributing to Chess MCP! This document provides guidelines and
+instructions for contributing to the project.
 
 ## Table of Contents
 
@@ -15,7 +16,8 @@ Thank you for your interest in contributing to Chess MCP! This document provides
 
 ## Code of Conduct
 
-This project adheres to a code of conduct that promotes a welcoming and inclusive environment for all contributors. Please be respectful and considerate in all interactions.
+This project adheres to a code of conduct that promotes a welcoming and inclusive environment for
+all contributors. Please be respectful and considerate in all interactions.
 
 ## Getting Started
 
@@ -29,17 +31,20 @@ This project adheres to a code of conduct that promotes a welcoming and inclusiv
 
 1. Fork the repository on GitHub
 2. Clone your fork locally:
+
    ```bash
    git clone https://github.com/your-username/chess-mcp.git
    cd chess-mcp
    ```
 
 3. Install dependencies:
+
    ```bash
    npm install
    ```
 
 4. Run tests to ensure everything is working:
+
    ```bash
    npm test
    ```
@@ -72,6 +77,7 @@ type(scope): description
 ```
 
 Types:
+
 - `feat`: New feature
 - `fix`: Bug fix
 - `docs`: Documentation changes
@@ -81,6 +87,7 @@ Types:
 - `chore`: Maintenance tasks
 
 Examples:
+
 - `feat(mcp): add move validation tool`
 - `fix(game): resolve draw detection issue`
 - `docs(readme): update installation instructions`
@@ -88,6 +95,7 @@ Examples:
 ### Development Workflow
 
 1. Create a new branch from `main`:
+
    ```bash
    git checkout -b feature/your-feature-name
    ```
@@ -95,17 +103,20 @@ Examples:
 2. Make your changes following the coding standards
 3. Write or update tests for your changes
 4. Ensure all tests pass:
+
    ```bash
    npm test
    ```
 
 5. Run linting and formatting:
+
    ```bash
    npm run lint
    npm run format
    ```
 
 6. Run type checking:
+
    ```bash
    npm run typecheck
    ```
@@ -182,10 +193,10 @@ describe('ComponentName', () => {
     it('should do something specific', () => {
       // Arrange
       const input = 'test input';
-      
+
       // Act
       const result = component.method(input);
-      
+
       // Assert
       expect(result).toBe(expected);
     });
@@ -225,7 +236,7 @@ When reporting bugs, please include:
 - **Steps to Reproduce**: Detailed steps to reproduce the behavior
 - **Expected Behavior**: What you expected to happen
 - **Actual Behavior**: What actually happened
-- **Environment**: 
+- **Environment**:
   - OS version
   - Node.js version
   - Package version
@@ -233,7 +244,8 @@ When reporting bugs, please include:
 
 ### Security Issues
 
-For security vulnerabilities, please do not open a public issue. Instead, email the maintainers directly.
+For security vulnerabilities, please do not open a public issue. Instead, email the maintainers
+directly.
 
 ## Feature Requests
 
@@ -284,8 +296,10 @@ When working with MCP-related code:
 
 ## Recognition
 
-Contributors will be recognized in the project's documentation and release notes. Thank you for helping make Chess MCP better!
+Contributors will be recognized in the project's documentation and release notes. Thank you for
+helping make Chess MCP better!
 
 ---
 
-By contributing to Chess MCP, you agree that your contributions will be licensed under the MIT License.
+By contributing to Chess MCP, you agree that your contributions will be licensed under the MIT
+License.

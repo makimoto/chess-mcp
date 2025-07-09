@@ -1,6 +1,7 @@
 # License Compatibility Analysis
 
-This document provides a comprehensive analysis of license compatibility for the Chess MCP project and its dependencies.
+This document provides a comprehensive analysis of license compatibility for the Chess MCP project
+and its dependencies.
 
 ## Our Project License
 
@@ -27,11 +28,11 @@ This document provides a comprehensive analysis of license compatibility for the
 
 ## License Compatibility Matrix
 
-| Our License | Dependency License | Compatible | Notes |
-|-------------|-------------------|------------|--------|
-| MIT | MIT | ✅ Yes | Same license, full compatibility |
-| MIT | BSD-2-Clause | ✅ Yes | BSD licenses are MIT-compatible |
-| MIT | BSD-3-Clause | ✅ Yes | BSD licenses are MIT-compatible |
+| Our License | Dependency License | Compatible | Notes                            |
+| ----------- | ------------------ | ---------- | -------------------------------- |
+| MIT         | MIT                | ✅ Yes     | Same license, full compatibility |
+| MIT         | BSD-2-Clause       | ✅ Yes     | BSD licenses are MIT-compatible  |
+| MIT         | BSD-3-Clause       | ✅ Yes     | BSD licenses are MIT-compatible  |
 
 ## Development Dependencies Summary
 
@@ -47,16 +48,19 @@ Based on the license summary, all development dependencies use compatible licens
 ## License Requirements and Attribution
 
 ### BSD-2-Clause Requirements (chess.js)
+
 - ✅ Retain copyright notice in source redistributions
 - ✅ Retain license text in binary redistributions
 - ✅ No endorsement clause to worry about
 
 ### BSD-3-Clause Requirements (sqlite3)
+
 - ✅ Retain copyright notice in source redistributions
-- ✅ Retain license text in binary redistributions  
+- ✅ Retain license text in binary redistributions
 - ✅ No use of contributor names for endorsement without permission
 
 ### MIT Requirements (@modelcontextprotocol/sdk)
+
 - ✅ Include copyright notice and permission notice in all copies
 - ✅ No additional restrictions
 
@@ -70,13 +74,16 @@ Based on the license summary, all development dependencies use compatible licens
 
 ## Conclusions
 
-✅ **FULLY COMPATIBLE**: All production dependencies use licenses that are compatible with our MIT license.
+✅ **FULLY COMPATIBLE**: All production dependencies use licenses that are compatible with our MIT
+license.
 
-✅ **NO COPYLEFT ISSUES**: No GPL or other copyleft licenses that would require us to change our license.
+✅ **NO COPYLEFT ISSUES**: No GPL or other copyleft licenses that would require us to change our
+license.
 
 ✅ **COMMERCIAL FRIENDLY**: All licenses allow commercial use and redistribution.
 
-✅ **ATTRIBUTION COMPLIANT**: All required attributions are automatically handled through npm package distribution.
+✅ **ATTRIBUTION COMPLIANT**: All required attributions are automatically handled through npm
+package distribution.
 
 ## Recommendations
 
@@ -90,7 +97,8 @@ Based on the license summary, all development dependencies use compatible licens
 
 ## Legal Disclaimer
 
-This analysis is provided for informational purposes. For legal advice regarding license compliance, consult with a qualified attorney specializing in intellectual property law.
+This analysis is provided for informational purposes. For legal advice regarding license compliance,
+consult with a qualified attorney specializing in intellectual property law.
 
 ---
 

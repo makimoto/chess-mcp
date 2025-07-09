@@ -28,7 +28,7 @@
             "description": "ID of the white player"
           },
           "blackPlayerId": {
-            "type": "string", 
+            "type": "string",
             "description": "ID of the black player"
           }
         }

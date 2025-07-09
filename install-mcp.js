@@ -2,7 +2,7 @@
 
 /**
  * Chess MCP Installation Script
- * 
+ *
  * This script configures the Chess MCP server for use with Claude MCP.
  * It can be run automatically during npm install or manually by users.
  */
@@ -16,7 +16,10 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const CLAUDE_CONFIG_DIR = path.join(os.homedir(), '.claude');
-const CLAUDE_CONFIG_FILE = path.join(CLAUDE_CONFIG_DIR, 'claude_desktop_config.json');
+const CLAUDE_CONFIG_FILE = path.join(
+  CLAUDE_CONFIG_DIR,
+  'claude_desktop_config.json'
+);
 
 /**
  * Get the package installation directory
@@ -26,15 +29,15 @@ function getPackageDir() {
   const possiblePaths = [
     path.join(__dirname),
     path.join(process.cwd()),
-    path.join(process.cwd(), 'node_modules', '@makimoto', 'chess-mcp')
+    path.join(process.cwd(), 'node_modules', '@makimoto', 'chess-mcp'),
   ];
-  
+
   for (const dir of possiblePaths) {
     if (fs.existsSync(path.join(dir, 'package.json'))) {
       return dir;
     }
   }
-  
+
   return __dirname;
 }
 
@@ -48,9 +51,12 @@ function readClaudeConfig() {
       return JSON.parse(content);
     }
   } catch (error) {
-    console.warn('Warning: Could not read existing Claude configuration:', error.message);
+    console.warn(
+      'Warning: Could not read existing Claude configuration:',
+      error.message
+    );
   }
-  
+
   return { mcpServers: {} };
 }
 
@@ -63,7 +69,7 @@ function writeClaudeConfig(config) {
     if (!fs.existsSync(CLAUDE_CONFIG_DIR)) {
       fs.mkdirSync(CLAUDE_CONFIG_DIR, { recursive: true });
     }
-    
+
     // Write the configuration
     fs.writeFileSync(CLAUDE_CONFIG_FILE, JSON.stringify(config, null, 2));
     return true;
@@ -79,27 +85,27 @@ function writeClaudeConfig(config) {
 function configureChessMCP() {
   const packageDir = getPackageDir();
   const serverPath = path.join(packageDir, 'dist', 'server.js');
-  
+
   // Verify the server file exists
   if (!fs.existsSync(serverPath)) {
     console.error('Error: Chess MCP server file not found at:', serverPath);
     console.error('Please ensure the package is properly installed and built.');
     return false;
   }
-  
+
   // Read existing configuration
   const config = readClaudeConfig();
-  
+
   // Add Chess MCP server configuration
   config.mcpServers = config.mcpServers || {};
   config.mcpServers['chess-mcp'] = {
     command: 'node',
     args: [serverPath],
     env: {
-      NODE_ENV: 'production'
-    }
+      NODE_ENV: 'production',
+    },
   };
-  
+
   // Write updated configuration
   if (writeClaudeConfig(config)) {
     console.log('✅ Chess MCP server configured successfully!');
@@ -127,7 +133,7 @@ function configureChessMCP() {
     console.log('🚀 Restart Claude to use the Chess MCP server!');
     return true;
   }
-  
+
   return false;
 }
 
@@ -136,10 +142,10 @@ function configureChessMCP() {
  */
 function removeChessMCP() {
   const config = readClaudeConfig();
-  
+
   if (config.mcpServers && config.mcpServers['chess-mcp']) {
     delete config.mcpServers['chess-mcp'];
-    
+
     if (writeClaudeConfig(config)) {
       console.log('✅ Chess MCP server removed from configuration');
       console.log('🚀 Restart Claude to apply changes');
@@ -149,7 +155,7 @@ function removeChessMCP() {
     console.log('ℹ️ Chess MCP server not found in configuration');
     return true;
   }
-  
+
   return false;
 }
 
@@ -178,26 +184,26 @@ function showHelp() {
  */
 function main() {
   const command = process.argv[2] || 'install';
-  
+
   switch (command) {
     case 'install':
       if (!configureChessMCP()) {
         process.exit(1);
       }
       break;
-      
+
     case 'remove':
       if (!removeChessMCP()) {
         process.exit(1);
       }
       break;
-      
+
     case 'help':
     case '--help':
     case '-h':
       showHelp();
       break;
-      
+
     default:
       console.error('Unknown command:', command);
       showHelp();
@@ -210,7 +216,4 @@ if (import.meta.url === `file://${process.argv[1]}`) {
   main();
 }
 
-export {
-  configureChessMCP,
-  removeChessMCP
-};
+export { configureChessMCP, removeChessMCP };

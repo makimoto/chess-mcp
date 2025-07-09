@@ -2,17 +2,19 @@
 
 All notable changes to this project will be documented in this file.
 
-The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
-and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project
+adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
 ### Added
+
 - Placeholder for future changes
 
 ## [0.1.0] - 2024-07-09
 
 ### Added
+
 - Initial release of Chess MCP Server
 - Complete chess game management system
 - Model Context Protocol (MCP) integration for Claude and other LLM agents
@@ -35,7 +37,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - `resume_game` - Resume paused games
 - Advanced chess engine features:
   - Complete move validation using chess.js
-  - Automatic draw detection (stalemate, insufficient material, fifty-move rule, threefold repetition)
+  - Automatic draw detection (stalemate, insufficient material, fifty-move rule, threefold
+    repetition)
   - Support for all chess rules including castling, en passant, and promotion
   - Comprehensive game state tracking
 - Multiple storage options:
@@ -67,6 +70,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Troubleshooting guide
 
 ### Technical Details
+
 - Built with TypeScript 5.6.3
 - Uses chess.js 1.4.0 for chess engine functionality
 - SQLite3 5.1.7 for optional persistent storage
@@ -76,6 +80,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Node.js >= 18.0.0 required
 
 ### Compatibility
+
 - Compatible with Claude Desktop and other MCP-enabled clients
 - Cross-platform support (Windows, macOS, Linux)
 - MIT License - commercial and open source friendly
