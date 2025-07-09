@@ -83,14 +83,23 @@ function writeClaudeConfig(config) {
  * Configure Chess MCP server
  */
 function configureChessMCP() {
+  // Skip configuration in CI environments
+  if (process.env.CI || process.env.GITHUB_ACTIONS) {
+    console.log('ℹ️ Skipping Chess MCP configuration in CI environment');
+    return true;
+  }
+
   const packageDir = getPackageDir();
   const serverPath = path.join(packageDir, 'dist', 'server.js');
 
   // Verify the server file exists
   if (!fs.existsSync(serverPath)) {
-    console.error('Error: Chess MCP server file not found at:', serverPath);
-    console.error('Please ensure the package is properly installed and built.');
-    return false;
+    console.log('ℹ️ Chess MCP server file not found at:', serverPath);
+    console.log('ℹ️ This is expected during development or CI build process.');
+    console.log(
+      'ℹ️ The MCP server will be configured once the project is built.'
+    );
+    return true; // Don't fail during development/CI
   }
 
   // Read existing configuration
